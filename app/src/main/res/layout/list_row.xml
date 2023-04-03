@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="5dip"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvListViewAccountId"
+        android:textStyle="bold"
+        android:textSize="17dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvListViewAccountWebsite"
+        android:layout_alignBaseline="@+id/tvListViewAccountId"
+        android:layout_alignBottom="@+id/tvListViewAccountId"
+        android:layout_alignParentRight="true"
+        android:textStyle="bold"
+        android:textSize="17dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvListViewAccountUsername"
+        android:layout_below="@+id/tvListViewAccountWebsite"
+        android:layout_marginTop="7dp"
+        android:textColor="#343434"
+        android:textSize="14dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvListViewAccountPassword"
+        android:inputType="textPassword"
+        android:layout_alignBaseline="@+id/tvListViewAccountUsername"
+        android:layout_alignBottom="@+id/tvListViewAccountWebsite"
+        android:layout_alignParentRight="true"
+        android:textColor="#343434"
+        android:textSize="17dp"/>
+
+
+</RelativeLayout>

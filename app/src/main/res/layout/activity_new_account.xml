@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.NewAccountActivity">
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/tvWebsite"
+        android:text="Website"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="50dp"/>
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvWebsite"
+        android:id="@+id/edtWebsite"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="20dp"/>
+
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvWebsite"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Username"
+        android:id="@+id/tvUsername"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/edtWebsite"
+        app:layout_constraintStart_toEndOf="@id/tvUsername"
+        android:id="@+id/edtUsername"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"/>
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvUsername"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Password"
+        android:id="@+id/tvPassword"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="30dp"/>
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/edtUsername"
+        app:layout_constraintStart_toEndOf="@id/tvPassword"
+        android:id="@+id/edtPassword"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"/>
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="44dp"
+        android:text="Add"
+        app:layout_constraintStart_toStartOf="@id/tvPassword"
+        app:layout_constraintTop_toBottomOf="@id/tvPassword" />
+    <Button
+        android:id="@+id/btnGeneratePassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Generate Password"
+        app:layout_constraintStart_toStartOf="@id/btnAdd"
+        app:layout_constraintTop_toBottomOf="@id/btnAdd" />
+    <Button
+        android:id="@+id/btnCopyPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Copy Password"
+        app:layout_constraintStart_toStartOf="@id/btnAdd"
+        app:layout_constraintTop_toBottomOf="@id/btnGeneratePassword" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

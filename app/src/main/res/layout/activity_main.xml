@@ -7,30 +7,56 @@
     tools:context=".activities.MainActivity">
 
 
-    <LinearLayout
-        android:layout_marginTop="200dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/socialicons"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
-
+        android:layout_height="@dimen/google_layout_height"
+        android:layout_marginTop="@dimen/google_layout_magin_top"
+        >
 
         <ImageView
             android:id="@+id/google_btn"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_margin="20dp"
-            android:src="@drawable/google" />
+            android:layout_width="@dimen/google_btn_width"
+            android:layout_height="@dimen/google_btn_heigh"
+            android:layout_marginStart="@dimen/google_btn_margin_start"
+            android:layout_marginTop="@dimen/google_btn_margin_top"
+            android:src="@drawable/google"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
+            android:id="@+id/tvGoogle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Sigin with Google"
-            app:layout_constraintStart_toStartOf="@id/google_btn"
-            app:layout_constraintTop_toBottomOf="@id/google_btn">
-        </TextView>
+            android:layout_marginStart="@dimen/tvGoogle_margin_start"
+            android:layout_marginTop="@dimen/tvGoogle_margin_top"
+            android:text="@string/tvGoogle"
+            android:textSize="@dimen/tvGoogle_text_size"
+            app:layout_constraintStart_toEndOf="@id/google_btn"
+            app:layout_constraintTop_toTopOf="@id/google_btn" />
 
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/fb_btn"
+            android:layout_width="@dimen/google_btn_width"
+            android:layout_height="@dimen/google_btn_heigh"
+            android:layout_marginStart="@dimen/fb_btn_margin_start"
+            android:layout_marginTop="@dimen/fb_btn_margin_top"
+            android:src="@drawable/facebook"
+            app:layout_constraintStart_toStartOf="@+id/google_btn"
+            app:layout_constraintTop_toTopOf="@+id/google_btn" />
+
+        <TextView
+            android:id="@+id/tvFacebook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/tvFacebook_margin_start"
+            android:layout_marginTop="@dimen/tvFacebook_margin_top"
+            android:text="@string/tvFacebook"
+            android:textSize="@dimen/tvFacebook_text_size"
+            app:layout_constraintStart_toEndOf="@id/fb_btn"
+            app:layout_constraintTop_toTopOf="@id/fb_btn" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </RelativeLayout>

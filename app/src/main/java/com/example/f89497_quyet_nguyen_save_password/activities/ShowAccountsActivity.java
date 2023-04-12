@@ -20,12 +20,19 @@ import com.example.f89497_quyet_nguyen_save_password.R;
 import com.example.f89497_quyet_nguyen_save_password.services.ThemeMusicService;
 import com.example.f89497_quyet_nguyen_save_password.sqlite.DBManager;
 import com.example.f89497_quyet_nguyen_save_password.sqlite.DatabaseHelper;
+import com.facebook.AccessToken;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ShowAccountsActivity extends AppCompatActivity {
 
@@ -40,6 +47,7 @@ public class ShowAccountsActivity extends AppCompatActivity {
     ListView lvAccounts;
     SimpleCursorAdapter adapter;
     Intent intent;
+    boolean isLoggedIn;
     SharedPreferences sharedPreferences;
 
     final String[] from = new String[] { DatabaseHelper._ID,
@@ -56,11 +64,12 @@ public class ShowAccountsActivity extends AppCompatActivity {
         btnAdd = findViewById(R.id.btnAdd);
         btnOpenMusic = findViewById(R.id.btnOpenMusic);
         btnStopMusic = findViewById(R.id.btnStopMusic);
-        lvAccounts = findViewById(R.id.lvAccounts);
+        //lvAccounts = findViewById(R.id.lvAccounts);
         sharedPreferences = getSharedPreferences("account_id",MODE_PRIVATE);
         tvGoogleUser = findViewById(R.id.tvGoogleUser);
         btnSignOut = findViewById(R.id.btnLogout);
 
+        //-----------Get Data of Google API------------//
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         gsc = GoogleSignIn.getClient(this,gso);
 
@@ -71,7 +80,45 @@ public class ShowAccountsActivity extends AppCompatActivity {
             tvGoogleUser.setText(personName);
         }
 
-        //sign out google account
+        //-----------Get Data of Facebook API------------//
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        isLoggedIn = accessToken != null && !accessToken.isExpired();
+        GraphRequest request = GraphRequest.newMeRequest(
+                accessToken,
+                new GraphRequest.GraphJSONObjectCallback() {
+                    @Override
+                    public void onCompleted(
+                            JSONObject object,
+                            GraphResponse response) {
+                        // Application code
+                        if(isLoggedIn){
+                            try {
+                                String fullname = object.getString("name");
+                                tvGoogleUser.setText(fullname);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                });
+        Bundle parameters = new Bundle();
+        parameters.putString("fields", "id,name,link");
+        request.setParameters(parameters);
+        request.executeAsync();
+
+        //------------SQLite---------------
+//        //get data from database
+//        dbManager = new DBManager(this);
+//        dbManager.open();
+//        Cursor cursor = dbManager.fetch();
+//
+//        //create adapter and give data of adapter to list view
+//        adapter = new SimpleCursorAdapter(this,R.layout.list_row,cursor,from,to,0);
+//        adapter.notifyDataSetChanged();
+//        lvAccounts.setAdapter(adapter);
+
+
+        //button sign out
         btnSignOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,18 +126,7 @@ public class ShowAccountsActivity extends AppCompatActivity {
             }
         });
 
-
-
-        //get data from database
-        dbManager = new DBManager(this);
-        dbManager.open();
-        Cursor cursor = dbManager.fetch();
-
-        //create adapter and give data of adapter to list view
-        adapter = new SimpleCursorAdapter(this,R.layout.list_row,cursor,from,to,0);
-        adapter.notifyDataSetChanged();
-        lvAccounts.setAdapter(adapter);
-
+        //button add
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -101,58 +137,58 @@ public class ShowAccountsActivity extends AppCompatActivity {
         });
 
         //click on a item of list view and go to the UPDATE ACTIVITY
-        lvAccounts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                sharedPreferences = getSharedPreferences("account",MODE_PRIVATE);
-                intent = new Intent(ShowAccountsActivity.this, UpdateAccountActivity.class);
-                TextView idTextView = view.findViewById(R.id.tvListViewAccountId);
-                TextView websiteTextView = view.findViewById(R.id.tvListViewAccountWebsite);
-                TextView usernameTextView = view.findViewById(R.id.tvListViewAccountUsername);
-                TextView passwordTextView = view.findViewById(R.id.tvListViewAccountPassword);
-
-                String _id = idTextView.getText().toString();
-                String website = websiteTextView.getText().toString();
-                String username= usernameTextView.getText().toString();
-                String password = passwordTextView.getText().toString();
-
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString("id",_id);
-                editor.putString("website",website);
-                editor.putString("username",username);
-                editor.putString("password",password);
-                editor.commit();
-                startActivity(intent);
-            }
-        });
+//        lvAccounts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                sharedPreferences = getSharedPreferences("account",MODE_PRIVATE);
+//                intent = new Intent(ShowAccountsActivity.this, UpdateAccountActivity.class);
+//                TextView idTextView = view.findViewById(R.id.tvListViewAccountId);
+//                TextView websiteTextView = view.findViewById(R.id.tvListViewAccountWebsite);
+//                TextView usernameTextView = view.findViewById(R.id.tvListViewAccountUsername);
+//                TextView passwordTextView = view.findViewById(R.id.tvListViewAccountPassword);
+//
+//                String _id = idTextView.getText().toString();
+//                String website = websiteTextView.getText().toString();
+//                String username= usernameTextView.getText().toString();
+//                String password = passwordTextView.getText().toString();
+//
+//                SharedPreferences.Editor editor = sharedPreferences.edit();
+//                editor.putString("id",_id);
+//                editor.putString("website",website);
+//                editor.putString("username",username);
+//                editor.putString("password",password);
+//                editor.commit();
+//                startActivity(intent);
+//            }
+//        });
 
         //long click on item of list view and DELETE ACCOUNT
-        lvAccounts.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                Long _id = Long.parseLong(((TextView)view.findViewById(R.id.tvListViewAccountId)).getText().toString());
-                new AlertDialog.Builder(ShowAccountsActivity.this)
-                        .setTitle("Do you want to remove account: " + ((TextView)view.findViewById(R.id.tvListViewAccountId)).getText().toString())
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dbManager.delete(_id);
-                                Cursor cursor = dbManager.fetch();
-                                adapter = new SimpleCursorAdapter(getApplicationContext(),R.layout.list_row,cursor,from,to,0);
-                                lvAccounts.setAdapter(adapter);
-                            }
-                        })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        })
-                        .create()
-                        .show();
-                return true;
-            };
-        });
+//        lvAccounts.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+//            @Override
+//            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+//                Long _id = Long.parseLong(((TextView)view.findViewById(R.id.tvListViewAccountId)).getText().toString());
+//                new AlertDialog.Builder(ShowAccountsActivity.this)
+//                        .setTitle("Do you want to remove account: " + ((TextView)view.findViewById(R.id.tvListViewAccountId)).getText().toString())
+//                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                dbManager.delete(_id);
+//                                Cursor cursor = dbManager.fetch();
+//                                adapter = new SimpleCursorAdapter(getApplicationContext(),R.layout.list_row,cursor,from,to,0);
+//                                lvAccounts.setAdapter(adapter);
+//                            }
+//                        })
+//                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                dialog.dismiss();
+//                            }
+//                        })
+//                        .create()
+//                        .show();
+//                return true;
+//            };
+//        });
 
         //start THEME MUSIC SERVICE
         btnOpenMusic.setOnClickListener(new View.OnClickListener() {
@@ -172,6 +208,11 @@ public class ShowAccountsActivity extends AppCompatActivity {
     }
 
     void signOut(){
+        if(isLoggedIn) {
+            LoginManager.getInstance().logOut();
+            startActivity(new Intent(ShowAccountsActivity.this,MainActivity.class));
+            finish();
+        }
         gsc.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(Task<Void> task) {

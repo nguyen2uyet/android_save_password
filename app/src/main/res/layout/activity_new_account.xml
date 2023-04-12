@@ -7,91 +7,91 @@
     tools:context=".activities.NewAccountActivity">
 
     <TextView
-        android:layout_width="100dp"
+        android:id="@+id/tvWebsite"
+        android:layout_width="@dimen/tvWebsite_width"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:id="@+id/tvWebsite"
-        android:text="Website"
+        android:text="@string/tvWebsite"
         android:textStyle="bold"
-        android:textSize="20dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="50dp"/>
+        android:textSize="@dimen/tvWebsite_text_size"
+        android:layout_marginLeft="@dimen/tvWebsite_margin_left"
+        android:layout_marginTop="@dimen/tvWebsite_margin_top"/>
 
     <EditText
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tvWebsite"
         android:id="@+id/edtWebsite"
-        android:layout_marginTop="35dp"
-        android:layout_marginLeft="20dp"/>
+        android:layout_width="@dimen/edtWebsite_width"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/tvWebsite"
+        app:layout_constraintStart_toEndOf="@id/tvWebsite"
+        android:layout_marginTop="@dimen/edtWebsite_margin_top"
+        android:layout_marginLeft="@dimen/edtWebsite_margin_left"/>
 
 
     <TextView
-        android:layout_width="100dp"
+        android:id="@+id/tvUsername"
+        android:layout_width="@dimen/tvUsername_width"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tvWebsite"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="Username"
-        android:id="@+id/tvUsername"
+        app:layout_constraintStart_toStartOf="@id/tvWebsite"
+        android:text="@string/tvUsername"
         android:textStyle="bold"
-        android:textSize="20dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="20dp"/>
+        android:textSize="@dimen/tvUsername_text_size"
+        android:layout_marginLeft="@dimen/tvUsername_margin_left"
+        android:layout_marginTop="@dimen/tvUsername_margin_top"/>
 
     <EditText
-        android:layout_width="200dp"
+        android:id="@+id/edtUsername"
+        android:layout_width="@dimen/edtUsername_width"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/edtWebsite"
         app:layout_constraintStart_toEndOf="@id/tvUsername"
-        android:id="@+id/edtUsername"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"/>
+        android:layout_marginTop="@dimen/edtUsername_margin_top"
+        android:layout_marginLeft="@dimen/edtUsername_margin_left"/>
 
     <TextView
-        android:layout_width="100dp"
+        android:id="@+id/tvPassword"
+        android:layout_width="@dimen/tvPassword_width"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tvUsername"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="Password"
-        android:id="@+id/tvPassword"
+        app:layout_constraintStart_toStartOf="@id/tvWebsite"
+        android:text="@string/tvPassword"
         android:textStyle="bold"
-        android:textSize="20dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="30dp"/>
+        android:textSize="@dimen/tvPassword_size"
+        android:layout_marginLeft="@dimen/tvPassword_margin_left"
+        android:layout_marginTop="@dimen/tvPassword_margin_top"/>
 
     <EditText
-        android:layout_width="200dp"
+        android:id="@+id/edtPassword"
+        android:layout_width="@dimen/edtPassword_width"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/edtUsername"
         app:layout_constraintStart_toEndOf="@id/tvPassword"
-        android:id="@+id/edtPassword"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"/>
+        android:layout_marginTop="@dimen/edtPassword_margin_top"
+        android:layout_marginLeft="@dimen/edtPassword_margin_left"/>
     <Button
         android:id="@+id/btnAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginEnd="@dimen/btnAdd_margin_end"
+        android:layout_marginBottom="@dimen/btnAdd_margin_bottom"
         android:text="Add"
-        app:layout_constraintStart_toStartOf="@id/tvPassword"
-        app:layout_constraintTop_toBottomOf="@id/tvPassword" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
     <Button
         android:id="@+id/btnGeneratePassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Generate Password"
+        android:layout_marginTop="@dimen/btnGeneratePassword_margin_top"
+        android:text="@string/btnGeneratePassword"
         app:layout_constraintStart_toStartOf="@id/btnAdd"
         app:layout_constraintTop_toBottomOf="@id/btnAdd" />
     <Button
         android:id="@+id/btnCopyPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Copy Password"
+        android:layout_marginTop="@dimen/btnCopyPassword_margin_top"
+        android:text="@string/btnCopyPassword"
         app:layout_constraintStart_toStartOf="@id/btnAdd"
         app:layout_constraintTop_toBottomOf="@id/btnGeneratePassword" />
 

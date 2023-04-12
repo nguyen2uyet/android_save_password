@@ -4,76 +4,91 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.MainActivity">
+    tools:context=".activities.ShowAccountsActivity">
 
 
     <TextView
         android:id="@+id/tvHello"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello"
-        android:textSize="20dp"
+        android:text="@string/tvHello"
+        android:textSize="@dimen/tvHello_text_size"
         android:layout_alignBaseline="@+id/btnLogout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="@dimen/tvHello_margin_start"
+        android:layout_marginTop="@dimen/tvHello_margin_top"
         />
-    <TextView
+    <com.example.f89497_quyet_nguyen_save_password.models.AutoResizeTextView
         android:id="@+id/tvGoogleUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
         android:layout_alignBaseline="@+id/btnLogout"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="User"
-        android:textSize="20dp"
+        android:text="@string/tvGoogleUser"
+        android:ellipsize="none"
+        android:gravity="center"
+        android:maxLines="1"
+        android:textSize="100sp"
         app:layout_constraintStart_toEndOf="@id/tvHello"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="@dimen/tvGoogleUser_margin_start"
+        android:layout_marginTop="@dimen/tvGoogleUser_margin_top"
         />
     <Button
         android:id="@+id/btnLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Log Out"
-        android:layout_marginEnd="20dp"
+        android:text="@string/btnLogout"
+        android:layout_marginEnd="@dimen/btnLogout_margin_end"
+        android:layout_marginTop="@dimen/btnLogout_margin_top"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
     <Button
         android:id="@+id/btnAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="10dp"
-        android:text="Add"
-        app:layout_constraintStart_toStartOf="@id/lvAccounts"
-        app:layout_constraintTop_toBottomOf="@id/lvAccounts" />
+        android:layout_marginEnd="@dimen/btnAdd_margin_end"
+        android:layout_marginBottom="@dimen/btnAdd_margin_bottom"
+        android:text="@string/btnAdd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
     <Button
         android:id="@+id/btnOpenMusic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="10dp"
-        android:text="Open Music"
-        app:layout_constraintStart_toStartOf="@id/lvAccounts"
+        android:layout_marginStart="@dimen/btnOpenMusic_margin_start"
+        android:layout_marginTop="@dimen/btnOpenMusic_margin_top"
+        android:text="@string/btnOpenMusic"
+        app:layout_constraintStart_toStartOf="@id/btnAdd"
         app:layout_constraintTop_toBottomOf="@id/btnAdd" />
     <Button
         android:id="@+id/btnStopMusic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="10dp"
-        android:text="Stop Music"
-        app:layout_constraintStart_toStartOf="@id/lvAccounts"
+        android:layout_marginStart="@dimen/btnStopMusic_margin_start"
+        android:layout_marginTop="@dimen/btnStopMusic_margin_top"
+        android:text="@string/btnStopMusic"
+        app:layout_constraintStart_toStartOf="@id/btnAdd"
         app:layout_constraintTop_toBottomOf="@id/btnOpenMusic" />
 
-    <ListView
-        android:id="@+id/lvAccounts"
-        android:layout_width="371dp"
-        android:layout_height="500dp"
-        android:layout_marginStart="24dp"
+<!--    <ListView-->
+<!--        android:id="@+id/lvAccounts"-->
+<!--        android:layout_width="@dimen/lvAccounts_width"-->
+<!--        android:layout_height="@dimen/lvAccounts_height"-->
+<!--        android:layout_marginStart="@dimen/lvAccounts_margin_start"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tvHello"-->
+<!--        android:layout_marginTop="@dimen/lvAccounts_margin_top"-->
+<!--        />-->
+    <fragment
+        android:id="@+id/fragment1"
+        android:name="com.example.f89497_quyet_nguyen_save_password.activities.ListAccountsFragment"
+        android:layout_width="@dimen/fragment1_width"
+        android:layout_height="@dimen/fragment1_height"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvHello"
-        android:layout_marginTop="20dp"
-        tools:layout_editor_absoluteY="-2dp" />
+        android:layout_marginStart="@dimen/fragment1_margin_start"
+        android:layout_marginTop="@dimen/fragment1_margin_top"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">F89497-Quyet-Nguyen-Save-Password</string>
+    <string name="tvGoogle">Sign in with Google</string>
+    <string name="tvHello">Hello</string>
+    <string name="tvGoogleUser">User</string>
+    <string name="btnLogout">Log Out</string>
+    <string name="btnAdd">Add</string>
+    <string name="btnOpenMusic">Open Music</string>
+    <string name="btnStopMusic">Stop Music</string>
+    <string name="tvWebsite">Website</string>
+    <string name="tvUsername">Username</string>
+    <string name="tvPassword">Password</string>
+    <string name="btnGeneratePassword">Generate Password</string>
+    <string name="btnCopyPassword">Copy Password</string>
+    <string name="btnUpdate">Update</string>
+    <string name="btnCopyPasswordUpdate">Copy Password</string>
+    <string name="btnGoToWebsite">Go To Website</string>
+    <string name="server_client_id">1051406931634-8kegkghlkg77uog5aqohiolga9f2lplh.apps.googleusercontent.com</string>
+    <string name="facebook_app_id">1385941185593533</string>
+    <string name="fb_login_protocol_scheme">fb1385941185593533</string>
+    <string name="facebook_client_token">9eda42a3683841268e1f80014729e478</string>
+    <string name="tvFacebook">Sigin with Facebook</string>
 </resources>

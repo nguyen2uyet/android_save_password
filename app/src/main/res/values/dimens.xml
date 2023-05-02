@@ -25,7 +25,7 @@
     <dimen name="lvAccounts_margin_start">24dp</dimen>
     <dimen name="lvAccounts_margin_top">20dp</dimen>
     <dimen name="fragment1_width">371dp</dimen>
-    <dimen name="fragment1_height">350dp</dimen>
+    <dimen name="fragment1_height">250dp</dimen>
     <dimen name="tvWebsite_width">100dp</dimen>
     <dimen name="tvWebsite_text_size">20sp</dimen>
     <dimen name="tvWebsite_margin_left">50dp</dimen>
@@ -59,8 +59,8 @@
     <dimen name="edtUpdatePassword_width">200dp</dimen>
     <dimen name="edtUpdatePassword_margin_top">10dp</dimen>
     <dimen name="edtUpdatePassword_margin_left">20dp</dimen>
-    <dimen name="btnUpdate_margin_end">150dp</dimen>
-    <dimen name="btnUpdate_margin_bottom">250dp</dimen>
+    <dimen name="btnUpdate_margin_end">170dp</dimen>
+    <dimen name="btnUpdate_margin_bottom">180dp</dimen>
     <dimen name="btnCopyPasswordUpdate_margin_top">30dp</dimen>
     <dimen name="btnGoToWebsite_margin_top">30dp</dimen>
     <dimen name="google_layout_height">380dp</dimen>
@@ -83,6 +83,7 @@
     <dimen name="list_row_text_size_1">17sp</dimen>
     <dimen name="list_row_text_size_2">14sp</dimen>
     <dimen name="list_row_margin_top">7dp</dimen>
+    <dimen name="fragment1_height_lanscape">250dp</dimen>
 
 
 </resources>

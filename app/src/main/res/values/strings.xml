@@ -20,4 +20,7 @@
     <string name="fb_login_protocol_scheme">fb1385941185593533</string>
     <string name="facebook_client_token">9eda42a3683841268e1f80014729e478</string>
     <string name="tvFacebook">Sigin with Facebook</string>
+    <string name="ShowAccountsActivityLabel">Show Accounts</string>
+    <string name="NewAccountActivityLabel">Add New Account</string>
+    <string name="UpdateAccountActivityLabel">Update Account</string>
 </resources>

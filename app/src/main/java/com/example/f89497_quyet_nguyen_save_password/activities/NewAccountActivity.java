@@ -5,7 +5,6 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -43,36 +42,25 @@ public class NewAccountActivity extends AppCompatActivity {
         dbManager = new DBManager(this);
         dbManager.open();
 
-        //add new account to database
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String website = edtWebsite.getText().toString();
-                String username = edtUsername.getText().toString();
-                String password = edtPassword.getText().toString();
-                dbManager.insert(website,username,password);
-                intent = new Intent(NewAccountActivity.this,ShowAccountsActivity.class);
-                startActivity(intent);
-                Toast.makeText(getApplicationContext(),"Show Accounts Activity!",Toast.LENGTH_SHORT).show();
-            }
+        /* add new account to database */
+        btnAdd.setOnClickListener(v -> {
+            String website = edtWebsite.getText().toString();
+            String username = edtUsername.getText().toString();
+            String password = edtPassword.getText().toString();
+            dbManager.insert(website,username,password);
+            intent = new Intent(NewAccountActivity.this,ShowAccountsActivity.class);
+            startActivity(intent);
+            Toast.makeText(getApplicationContext(),"Show Accounts Activity!",Toast.LENGTH_SHORT).show();
         });
 
         //create strong password
-        btnGeneratePassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                edtPassword.setText(Utils.generateStrongPassword(16));
-            }
-        });
+        btnGeneratePassword.setOnClickListener(v -> edtPassword.setText(Utils.generateStrongPassword(16)));
 
         //copy password to clipboard
-        btnCopyPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clip = ClipData.newPlainText("password", edtPassword.getText().toString());
-                clipboard.setPrimaryClip(clip);
-            }
+        btnCopyPassword.setOnClickListener(v -> {
+            ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("password", edtPassword.getText().toString());
+            clipboard.setPrimaryClip(clip);
         });
 
     }

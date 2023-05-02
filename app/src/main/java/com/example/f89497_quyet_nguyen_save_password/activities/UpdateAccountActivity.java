@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -53,42 +52,33 @@ public class UpdateAccountActivity extends AppCompatActivity {
         dbManager.open();
 
         //update account
-        btnUpdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                intent = new Intent(UpdateAccountActivity.this, MainActivity.class);
-                String id = sharedPreferences.getString("id",null);
-                String website = edtUpdateWebsite.getText().toString();
-                String username = edtUpdateUsername.getText().toString();
-                String password = edtUpdatePassword.getText().toString();
-                if(id != null){
-                    dbManager.update(Long.parseLong(id),website,username,password);
-                }
-                startActivity(intent);
-                Toast.makeText(getApplicationContext(),"Main Activity!",Toast.LENGTH_SHORT).show();
+        btnUpdate.setOnClickListener(v -> {
+            intent = new Intent(UpdateAccountActivity.this, MainActivity.class);
+            String id = sharedPreferences.getString("id",null);
+            String website = edtUpdateWebsite.getText().toString();
+            String username = edtUpdateUsername.getText().toString();
+            String password = edtUpdatePassword.getText().toString();
+            if(id != null){
+                dbManager.update(Long.parseLong(id),website,username,password);
             }
+            startActivity(intent);
+            Toast.makeText(getApplicationContext(),"Main Activity!",Toast.LENGTH_SHORT).show();
         });
 
         //copy password to clipboard
-        btnCopyPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clip = ClipData.newPlainText("password", edtUpdatePassword.getText().toString());
-                clipboard.setPrimaryClip(clip);
-            }
+        btnCopyPassword.setOnClickListener(v -> {
+            ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("password", edtUpdatePassword.getText().toString());
+            clipboard.setPrimaryClip(clip);
         });
 
         //go to the website
-        btnGoToWebsite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String url = edtUpdateWebsite.getText().toString();
-                if (!url.startsWith("http://") && !url.startsWith("https://"))
-                    url = "http://" + url;
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                startActivity(browserIntent);
-            }
+        btnGoToWebsite.setOnClickListener(v -> {
+            String url = edtUpdateWebsite.getText().toString();
+            if (!url.startsWith("http://") && !url.startsWith("https://"))
+                url = "http://" + url;
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(browserIntent);
         });
     }
 }

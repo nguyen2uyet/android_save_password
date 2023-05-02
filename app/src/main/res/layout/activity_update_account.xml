@@ -15,17 +15,19 @@
         android:text="@string/tvWebsite"
         android:textStyle="bold"
         android:textSize="@dimen/tvWebsite_text_size"
-        android:layout_marginLeft="@dimen/tvWebsite_margin_left"
+        android:layout_marginStart="@dimen/tvWebsite_margin_left"
         android:layout_marginTop="@dimen/tvWebsite_margin_top"/>
 
     <EditText
         android:id="@+id/edtUpdateWebsite"
         android:layout_width="@dimen/edtUpdateWebsite_width"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tvWebsite"
+        android:layout_marginStart="@dimen/edtUpdateWebsite_margin_left"
         android:layout_marginTop="@dimen/edtUpdateWebsite_margin_top"
-        android:layout_marginLeft="@dimen/edtUpdateWebsite_margin_left"/>
+        android:importantForAutofill="no"
+        android:inputType="text"
+        app:layout_constraintStart_toEndOf="@id/tvWebsite"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
@@ -37,7 +39,7 @@
         android:text="@string/tvUsername"
         android:textStyle="bold"
         android:textSize="@dimen/tvUsername_text_size"
-        android:layout_marginLeft="@dimen/tvUsername_margin_left"
+        android:layout_marginStart="@dimen/tvUsername_margin_left"
         android:layout_marginTop="@dimen/tvUsername_margin_top"/>
 
     <EditText
@@ -47,7 +49,9 @@
         app:layout_constraintTop_toBottomOf="@id/edtUpdateWebsite"
         app:layout_constraintStart_toEndOf="@id/tvUsername"
         android:layout_marginTop="@dimen/edtUpdateUsername_margin_top"
-        android:layout_marginLeft="@dimen/edtUpdateUsername_margin_left"/>
+        android:layout_marginStart="@dimen/edtUpdateUsername_margin_left"
+        android:autofillHints=""
+        android:inputType="text" />
 
     <TextView
         android:id="@+id/tvPassword"
@@ -58,17 +62,19 @@
         android:text="@string/tvPassword"
         android:textStyle="bold"
         android:textSize="@dimen/tvPassword_text_size"
-        android:layout_marginLeft="@dimen/tvPassword_margin_left"
+        android:layout_marginStart="@dimen/tvPassword_margin_left"
         android:layout_marginTop="@dimen/tvPassword_margin_top"/>
 
     <EditText
         android:id="@+id/edtUpdatePassword"
         android:layout_width="@dimen/edtUpdatePassword_width"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/edtUpdateUsername"
-        app:layout_constraintStart_toEndOf="@id/tvPassword"
+        android:layout_marginStart="@dimen/edtUpdatePassword_margin_left"
         android:layout_marginTop="@dimen/edtUpdatePassword_margin_top"
-        android:layout_marginLeft="@dimen/edtUpdatePassword_margin_left"/>
+        android:importantForAutofill="no"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toEndOf="@id/tvPassword"
+        app:layout_constraintTop_toBottomOf="@id/edtUpdateUsername" />
     <Button
         android:id="@+id/btnUpdate"
         android:layout_width="wrap_content"

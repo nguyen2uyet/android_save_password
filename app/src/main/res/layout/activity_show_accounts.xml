@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".activities.ShowAccountsActivity">
 
-
     <TextView
         android:id="@+id/tvHello"
         android:layout_width="wrap_content"
@@ -71,22 +70,13 @@
         app:layout_constraintStart_toStartOf="@id/btnAdd"
         app:layout_constraintTop_toBottomOf="@id/btnOpenMusic" />
 
-<!--    <ListView-->
-<!--        android:id="@+id/lvAccounts"-->
-<!--        android:layout_width="@dimen/lvAccounts_width"-->
-<!--        android:layout_height="@dimen/lvAccounts_height"-->
-<!--        android:layout_marginStart="@dimen/lvAccounts_margin_start"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/tvHello"-->
-<!--        android:layout_marginTop="@dimen/lvAccounts_margin_top"-->
-<!--        />-->
     <fragment
         android:id="@+id/fragment1"
         android:name="com.example.f89497_quyet_nguyen_save_password.activities.ListAccountsFragment"
         android:layout_width="@dimen/fragment1_width"
         android:layout_height="@dimen/fragment1_height"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvHello"
+        app:layout_constraintTop_toBottomOf="@id/btnLogout"
         android:layout_marginStart="@dimen/fragment1_margin_start"
         android:layout_marginTop="@dimen/fragment1_margin_top"
         />

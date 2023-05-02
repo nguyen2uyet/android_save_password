@@ -1,10 +1,10 @@
 package com.example.f89497_quyet_nguyen_save_password.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,7 +23,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
-import java.util.Arrays;
+import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -55,17 +55,10 @@ public class MainActivity extends AppCompatActivity {
         //check google sign in account
         //if you don't have credential => can't enter second activity
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
-        if(acct!=null){
-            navigateToShowAccountsActivity();
-        }
+        if(acct!=null) navigateToShowAccountsActivity();
 
         //google button listener
-        googleBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signIn();
-            }
-        });
+        googleBtn.setOnClickListener(v -> signIn());
 
 
         LoginManager.getInstance().registerCallback(callbackManager,
@@ -83,17 +76,12 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onError(FacebookException exception) {
+                    public void onError(@NonNull FacebookException exception) {
                         // App code
                     }
                 });
 
-        facebookBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                LoginManager.getInstance().logInWithReadPermissions(MainActivity.this, Arrays.asList("public_profile"));
-            }
-        });
+        facebookBtn.setOnClickListener(v -> LoginManager.getInstance().logInWithReadPermissions(MainActivity.this, Collections.singletonList("public_profile")));
 
 
 
